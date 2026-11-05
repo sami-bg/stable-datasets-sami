@@ -26,17 +26,16 @@
 <meta content="FGVC Aircraft | stable-datasets" name="twitter:title"/>
 <link href="../../_static/pygments.css?v=3efa2d9f" rel="stylesheet" type="text/css"/>
 <link href="../../_static/pygments_dark.css" id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css"/>
-<link href="../../_static/theme.css?v=d6d7c91b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/theme.css?v=009055c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/custom.css" rel="stylesheet" type="text/css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" rel="stylesheet" type="text/css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/awesome-sphinx-design.css?v=a81faafa" rel="stylesheet" type="text/css"/>
+<link href="../../_static/awesome-sphinx-design.css?v=b41b1d54" rel="stylesheet" type="text/css"/>
 <link href="../../search/" rel="search" title="Search"/>
 <link href="../../genindex/" rel="index" title="Index"/>
-<link href="../flowers102/" rel="next" title="Flowers102"/>
-<link href="../e_mnist/" rel="prev" title="EMNIST"/>
+<link href="../flowers17/" rel="next" title="Flowers17"/>
+<link href="../mnist_c/" rel="prev" title="MNIST-C"/>
 </head>
 <body :class="{ 'overflow-hidden': showSidebar }" @scroll.window="showScrollTop = pageYOffset &gt; 100" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false, showScrollTop: false }">
 <div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
@@ -87,37 +86,132 @@
 <li class="toctree-l1 current" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../">Datasets<button @click.prevent.stop="expanded = !expanded" type="button" x-cloak=""><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul class="current" x-show="expanded">
 <li class="toctree-l2"><a class="reference internal" href="../arabic_characters/">Arabic Characters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../arabic_digits/">Arabic Digits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caltech256/">Caltech-256</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cifar10/">CIFAR-10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cifar10_1/">CIFAR-10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cifar10_2/">CIFAR-10.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cifar100/">CIFAR-100</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cifar10_c/">CIFAR-10-C</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cifar100_c/">CIFAR-100-C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cifar10_n/">CIFAR-10N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cifar100_n/">CIFAR-100N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cinic10/">CINIC-10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cars196/">CARS-196</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coil20/">COIL-20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cct20/">Caltech Camera Traps (CCT20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coil100/">COIL-100 (Columbia Object Image Library)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dtd/">Describable Textures Dataset (DTD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../not_mnist/">not-MNIST</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fashion_mnist/">Fashion-MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fer2013/">FER2013</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kitti_distance/">KITTI Distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../oracle_mnist/">Oracle-MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rendered_sst2/">Rendered SST2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../k_mnist/">Kuzushiji-MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kannada_mnist/">Kannada-MNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../devanagari/">Devanagari Handwritten Character Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kth_tips/">KTH-TIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k_mnist49/">Kuzushiji-49</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../medmnist/">MedMNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../patch_camelyon/">PatchCamelyon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../awa2/">AWA2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../beans/">Beans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep_weeds/">DeepWeeds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stl10/">STL-10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tiny_imagenet/">Tiny ImageNet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tiny_imagenet_c/">Tiny ImageNet-C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imagenet_v2/">ImageNetV2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imagenet_sketch/">ImageNet-Sketch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imagenet_a/">ImageNet-A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imagenet_r/">ImageNet-R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../e_mnist/">EMNIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eth80/">ETH-80</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mnist_c/">MNIST-C</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">FGVC Aircraft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flowers17/">Flowers17</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../flowers102/">Flowers102</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tf_flowers/">TensorFlow Flowers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imagewoof/">Imagewoof</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../food101/">Food-101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../freiburg_groceries/">Freiburg Groceries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmd/">FMD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cub200/">CUB-200</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stanford_dogs/">Stanford Dogs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../country211/">Country-211</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cmu_faces/">CMU Face Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../defungi/">DeFungi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../galaxy10/">Galaxy10 DECaLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gtsrb/">GTSRB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hasy_v2/">HASYv2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../face_pointing/">Face Pointing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../olivetti_faces/">Olivetti Faces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optdigits/">UCI Optdigits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rock_paper_scissor/">Rock Paper Scissor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svhn/">The Street View House Numbers Dataset (SVHN)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linnaeus5/">Linnaeus 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caltech101/">Caltech-101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mnist_m/">MNIST-M</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bee_dataset/">BeeDataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aiderv2/">AIDERv2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grocery_store/">Grocery Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plantdoc/">PlantDoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fruits360/">Fruits-360</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../belgium_tsc/">BelgiumTSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plant_village/">PlantVillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intel_image_classification/">Intel Image Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../horse_or_human/">Horses vs. Humans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../semeion/">Semeion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../malaria/">Malaria Cell Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kather_colorectal_histology/">Kather Colorectal Histology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sun397/">SUN-397</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stanford40/">Stanford40</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usps/">USPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../oxford_iiit_pet/">Oxford-IIIT Pet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eurosat/">EuroSAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../breakhis/">BreakHis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../patternnet/">PatternNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pacs/">PACS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../office_home/">Office-Home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caltech101_silhouettes/">Caltech-101 Silhouettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scene8/">Scene8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../isic2016/">ISIC2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../brain_tumor_mri/">Brain Tumor MRI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lc25000/">LC25000</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weizmann_seg/">Weizmann Segmentation Evaluation Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bsds500/">BSDS500</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_motions/">BasicMotions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../epilepsy/">Epilepsy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hand_movement_direction/">HandMovementDirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../natops/">NATOPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../racket_sports/">RacketSports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uwave_gesture_library/">UWaveGestureLibrary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity_hourly/">Electricity (Hourly)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uber_tlc/">Uber TLC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../something_something_v2/">Something-Something V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clevrer/">CLEVRER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsprites/">dSprites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsprites_color/">Color dSprites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsprites_noise/">Noisy dSprites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsprites_scream/">Scream dSprites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shapes3d/">Shapes3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cars3d/">Cars3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../small_norb/">SmallNORB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uci_har/">UCI HAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mhealth/">MHEALTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../robot_execution_failures/">Robot Execution Failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../daily_and_sports_activities/">DailyAndSportsActivities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/quickstart/">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/showcase/">Showcase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing/">Contributing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1" x-data="{ expanded: $el.classList.contains('current') ? true : false }"><a :class="{ 'expanded' : expanded }" @click="expanded = !expanded" class="reference internal expandable" href="../../modules/">stable_datasets<button @click.prevent.stop="expanded = !expanded" type="button" x-cloak=""><span class="sr-only"></span><svg fill="currentColor" height="18px" stroke="none" viewbox="0 0 24 24" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></button></a><ul x-cloak="" x-show="expanded">
+<li class="toctree-l2"><a class="reference internal" href="../../stable_datasets/">stable_datasets package</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -318,7 +412,7 @@
 <script src="../../_static/documentation_options.js?v=c167d237"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-<script defer="defer" src="../../_static/theme.js?v=5db23cf8"></script>
+<script defer="defer" src="../../_static/theme.js?v=49cc6205"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 </body>
 </html>
