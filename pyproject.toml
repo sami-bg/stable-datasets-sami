@@ -33,6 +33,9 @@ dynamic = ["version"]
 [tool.setuptools]
 packages = { find = { include = ["stable_datasets*"] } }
 
+[tool.setuptools.package-data]
+"stable_datasets.framestore" = ["csrc/*.c"]
+
 [tool.setuptools.dynamic]
 version = {attr = "stable_datasets.__version__"}
 
@@ -46,6 +49,10 @@ lance = ["pylance"]
 
 # Video decoding and Video(storage="frames") caches
 video = ["opencv-python-headless", "torch", "torchcodec"]
+
+# JPEG frame stores with partial decoding (stable_datasets.framestore); the NVJPG engines also need
+# nvidia-nvimgcodec-cu12, the GPU loaders torchvision with CUDA
+framestore = ["pylance", "numba", "simplejpeg", "torchvision"]
 
 # Benchmark dependencies (profiling + SSL evaluation suite)
 benchmarks = [
