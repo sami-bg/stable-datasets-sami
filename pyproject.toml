@@ -75,6 +75,7 @@ dev = [
     "pytest-cov",
     "pytest-rich",
     "pytest-split",
+    "hypothesis",  # framestore's fuzz and property tests
     "codecov",
     "pre-commit",
     "ruff",
