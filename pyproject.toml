@@ -44,8 +44,7 @@ version = {attr = "stable_datasets.__version__"}
 
 video = ["torchcodec"]
 
-# JPEG frame stores with partial decoding (stable_datasets.framestore); the GPU loaders need torchvision with CUDA,
-# the converter's verification on the NVJPG engines (--gpu hw / auto) nvidia-nvimgcodec-cu12
+# JPEG frame stores with partial decoding (stable_datasets.framestore); the GPU loaders need torchvision with CUDA
 framestore = ["pylance", "numba", "simplejpeg", "torchvision"]
 
 # Benchmark dependencies (profiling + SSL evaluation suite)
