@@ -913,7 +913,10 @@ def test_download_raises_host_unreachable_when_every_candidate_has_network_error
     session, seen = _failing_session([requests.ConnectionError("no route"), _http_error(503)])
 
     # one attempt per URL: this checks how failures are classified, not the retries
-    with patch.object(utils, "_DOWNLOAD_ATTEMPTS", 1), patch("stable_datasets.utils.requests.Session", return_value=session):
+    with (
+        patch.object(utils, "_DOWNLOAD_ATTEMPTS", 1),
+        patch("stable_datasets.utils.requests.Session", return_value=session),
+    ):
         with patch("stable_datasets.utils.FileLock"):
             with pytest.raises(utils.HostUnreachableError, match="Failed to download from all candidate URLs"):
                 utils.download(primary, dest_folder=tmp_path, progress_bar=False, fallbacks=[fallback])
@@ -929,7 +932,10 @@ def test_download_404_is_not_host_unreachable(tmp_path):
     session, _ = _failing_session([requests.ConnectionError("no route"), _http_error(404)])
 
     # one attempt per URL: this checks how failures are classified, not the retries
-    with patch.object(utils, "_DOWNLOAD_ATTEMPTS", 1), patch("stable_datasets.utils.requests.Session", return_value=session):
+    with (
+        patch.object(utils, "_DOWNLOAD_ATTEMPTS", 1),
+        patch("stable_datasets.utils.requests.Session", return_value=session),
+    ):
         with patch("stable_datasets.utils.FileLock"):
             with pytest.raises(RuntimeError, match="Failed to download from all candidate URLs") as excinfo:
                 utils.download(primary, dest_folder=tmp_path, progress_bar=False, fallbacks=[fallback])
