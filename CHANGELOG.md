@@ -1,5 +1,9 @@
 # Unreleased
 
+- caches are Lance datasets only: `storage_format=`, `STORAGE_FORMAT`, the Arrow IPC writer and `ArrowBackend` are
+  removed (passing `storage_format=` raises a `TypeError`); `pylance` is a core dependency; in-memory datasets use
+  `TableBackend`; `map` and `flatten_indices` write Lance caches. Existing Lance caches keep their paths; Arrow caches
+  are rebuilt as Lance on first load
 - frame stores (`stable_datasets.framestore`, extra `framestore`): lance datasets of JPEG frames converted, losslessly
   and in place, so any subset of a frame's MCUs can be read and decoded on its own
   - `python -m stable_datasets.framestore.convert` / `convert_store`: census, re-coding with a restart marker after
