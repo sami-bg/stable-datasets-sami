@@ -912,7 +912,8 @@ def test_download_raises_host_unreachable_when_every_candidate_has_network_error
     fallback = "https://also-down.example.com/file.bin"
     session, seen = _failing_session([requests.ConnectionError("no route"), _http_error(503)])
 
-    with patch("stable_datasets.utils.requests.Session", return_value=session):
+    # one attempt per URL: this checks how failures are classified, not the retries
+    with patch.object(utils, "_DOWNLOAD_ATTEMPTS", 1), patch("stable_datasets.utils.requests.Session", return_value=session):
         with patch("stable_datasets.utils.FileLock"):
             with pytest.raises(utils.HostUnreachableError, match="Failed to download from all candidate URLs"):
                 utils.download(primary, dest_folder=tmp_path, progress_bar=False, fallbacks=[fallback])
@@ -927,7 +928,8 @@ def test_download_404_is_not_host_unreachable(tmp_path):
     fallback = "https://moved.example.com/file.bin"
     session, _ = _failing_session([requests.ConnectionError("no route"), _http_error(404)])
 
-    with patch("stable_datasets.utils.requests.Session", return_value=session):
+    # one attempt per URL: this checks how failures are classified, not the retries
+    with patch.object(utils, "_DOWNLOAD_ATTEMPTS", 1), patch("stable_datasets.utils.requests.Session", return_value=session):
         with patch("stable_datasets.utils.FileLock"):
             with pytest.raises(RuntimeError, match="Failed to download from all candidate URLs") as excinfo:
                 utils.download(primary, dest_folder=tmp_path, progress_bar=False, fallbacks=[fallback])
@@ -1154,6 +1156,16 @@ class _ScriptedResponse:
 
     def iter_content(self, chunk_size=8192):
         return iter([self.body])
+
+    @property
+    def raw(self):  # download() streams the undecoded bytes
+        body = self.body
+
+        class _Raw:
+            def stream(self, chunk_size=8192, decode_content=True):
+                return iter([body])
+
+        return _Raw()
 
     def __enter__(self):
         return self
